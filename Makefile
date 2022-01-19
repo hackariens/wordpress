@@ -3,7 +3,7 @@ STACK         := wordpress
 NETWORK       := proxylampy
 include make/docker/Makefile
 
-DOCKER_EXECPHP := @docker exec $(STACK)_phpfpm.1.$$(docker service ps -f 'name=$(STACK)_phpfpm' $(STACK)_phpfpm -q --no-trunc | head -n1)
+DOCKER_EXECPHP := @$(DOCKER_EXEC) $(STACK)_phpfpm.1.$$(docker service ps -f 'name=$(STACK)_phpfpm' $(STACK)_phpfpm -q --no-trunc | head -n1)
 
 COMPOSER_EXEC := ${DOCKER_EXECPHP} composer
 
