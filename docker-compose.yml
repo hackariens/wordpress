@@ -41,7 +41,9 @@ services:
     deploy:
       labels:
         - "traefik.enable=true"
-        - "traefik.http.routers.wordpress.rule=HostRegexp(`wordpress.traefik.me`, `wordpress.{ip:.*}.traefik.me`)"
+        - "traefik.http.routers.wordpress.rule=Host(`wordpress.traefik.me`)"
+        - "traefik.http.routers.wordpress-tls.tls.domains[0].main=wordpress.traefik.me"
+        - "traefik.http.routers.wordpress.tls=true"
         - "traefik.http.services.wordpress.loadbalancer.server.port=80"
   phpfpm:
     image: koromerzhin/phpfpm:7.4.12
