@@ -29,8 +29,14 @@ docker swarm
 Hosts:
 
 - wordpress.traefik.me
-- mailhog-wordpress.traefik.me
-- phpmyadmin-wordpress.traefik.me
+
+## Download
+
+```sh
+git clone git@github.com:koromerzhin/template-wordpress.git template-wordpress
+cd template-wordpress
+git submodule update --init
+```
 
 ## Install
 
