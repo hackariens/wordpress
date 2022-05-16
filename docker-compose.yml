@@ -14,7 +14,7 @@ volumes:
 
 services:
   phpfpmexec:
-    image: koromerzhin/phpfpm:7.4.12
+    image: koromerzhin/phpfpm:7.4.29
     command: sh -c "composer install"
     volumes:
       - ${PWD}/apps:/var/www/
@@ -46,7 +46,7 @@ services:
         - "traefik.http.routers.wordpress.tls=true"
         - "traefik.http.services.wordpress.loadbalancer.server.port=80"
   phpfpm:
-    image: koromerzhin/phpfpm:7.4.12
+    image: koromerzhin/phpfpm:7.4.29
     depends_on:
       - mariadb
       - mailhog
