@@ -53,7 +53,7 @@
     "roave/security-advisories": "dev-master",
     "behat/behat": "3.8.1",
     "phpstan/phpstan": "0.12.90",
-    "povils/phpmnd": "2.4.0"
+    "povils/phpmnd": "2.5.0"
   },
   "config": {
     "optimize-autoloader": true,
