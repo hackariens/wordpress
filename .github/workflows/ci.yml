@@ -27,6 +27,10 @@ jobs:
         run: npm run docker:getpull-image
       - name: 'create apps'
         run: npm run create:apps
+      - name: 'env wordpress'
+        run: |
+          rm -rf apps/.env
+          cp .env.wordpress wordpress/.env
       - name: 'Build containers'
         run: npm run docker:deploy
       - name: 'Waiting'
