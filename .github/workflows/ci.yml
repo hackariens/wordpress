@@ -35,6 +35,8 @@ jobs:
         run: npm run docker:deploy
       - name: 'Waiting'
         run: npm run docker:waiting
+      - name: 'docker ls'
+        run: npm run docker:waiting
       - name: linter readme.md
         run: npm run lint:markdown
       - name: 'sleep 50'
