@@ -28,9 +28,7 @@ jobs:
       - name: 'create apps'
         run: npm run create:apps
       - name: 'env wordpress'
-        run: |
-          rm -rf apps/.env
-          cp .env.wordpress wordpress/.env
+        run: cp .env.wordpress apps/.env
       - name: 'Build containers'
         run: npm run docker:deploy
       - name: 'Waiting'
