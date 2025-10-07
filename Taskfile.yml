@@ -103,12 +103,6 @@ tasks:
         COMPOSE_FILE: "{{.DOCKERCOMPOSEFILE}}"
         STACK_NAME: "{{.STACK_NAME}}"
 
-  wordpress:install-first:
-    desc: "Installation initiale de Composer et des dépendances"
-    silent: true
-    cmds:
-    - docker run --rm -v $(pwd)/apps:/var/www -w /var/www koromerzhin/php:8.4.3-apache symfony composer install
-
   wordpress:waiting:
     desc: "Attend que les services soient opérationnels"
     silent: true
