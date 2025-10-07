@@ -82,7 +82,6 @@ jobs:
           task wordpress:getpull-image
           task wordpress:getapacheconf
           task create:apps
-          task wordpress:install-first
           task wordpress:deploy
           task wordpress:waiting
       
