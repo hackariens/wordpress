@@ -3,9 +3,9 @@ networks:
   net:
     driver: overlay
     attachable: true
-  proxylampy:
+  proxyhackariens:
     external: true
-  serverlampy:
+  serverhackariens:
     external: true
 services:
   www:
@@ -31,12 +31,12 @@ services:
       DATABASE_URL: "mysqli://wordpress:password@mariadb:3306/wordpress_bdd"
     networks:
       - net
-      - serverlampy
-      - proxylampy
+      - serverhackariens
+      - proxyhackariens
     deploy:
       labels:
         - "traefik.enable=true"
-        - "traefik.http.routers.wordpress.rule=Host(`wordpress.traefik.me`)"
-        - "traefik.http.routers.wordpress-tls.tls.domains[0].main=wordpress.traefik.me"
+        - "traefik.http.routers.wordpress.rule=Host(`wordpress.hackariens.fr`)"
         - "traefik.http.routers.wordpress.tls=true"
+        - "traefik.http.routers.wordpress.tls.certresolver=myresolver"
         - "traefik.http.services.wordpress.loadbalancer.server.port=80"
