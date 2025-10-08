@@ -45,6 +45,7 @@ tasks:
   help:
     desc: "Affiche l'aide détaillée"
     aliases: [ h ]
+    silent: true
     cmds:
     - task: default
 
@@ -52,14 +53,14 @@ tasks:
     desc: "Crée le dossier apps avec une installation WordPress via Bedrock"
     silent: true
     cmds:
-      - docker run --rm -v $(pwd):/var/www -w /var/www koromerzhin/php:8.4.3-apache composer create-project roots/bedrock apps --no-interaction
+    - docker run --rm -v $(pwd):/var/www -w /var/www koromerzhin/php:8.4.3-apache composer create-project roots/bedrock apps --no-interaction
 
   wordpress:getapacheconf:
     desc: "Récupère la configuration Apache depuis l'image Docker"
     silent: true
     cmds:
     - rm -rf ./conf/apache2 || true
-    - docker create --name wordpress-php koromerzhin/php:8.4.3-apache 
+    - docker create --name wordpress-php koromerzhin/php:8.4.3-apache
     - mkdir -p ./conf/apache2
     - docker cp wordpress-php:/etc/apache2/sites-available/000-default.conf ./conf/apache2/000-default.conf
     - docker cp wordpress-php:/etc/apache2/apache2.conf ./conf/apache2/apache2.conf
@@ -85,6 +86,7 @@ tasks:
       vars:
         SOURCE_FILE: ./{{.FOLDERSQL}}/{{.FILESQL}}
         DEST_DIR: "{{.FOLDERLAMPY}}/mariadb_init/"
+        FORCE: true
 
   wordpress:getpull-image:
     desc: "Télécharge les images Docker définies dans le docker-compose.yml"
@@ -122,6 +124,7 @@ tasks:
 
   wordpress:exec:
     desc: "Exécute une commande dans un conteneur en cours d'exécution"
+    silent: true
     cmds:
     - task: wordpress:copysql
     - task: wordpress:getpull-image
@@ -131,15 +134,9 @@ tasks:
     - task: wordpress:waiting
     - task: wordpress:ls
 
-  wordpress:download-phar:
-    desc: "Télécharger les différents fichiers phar"
-    cmds:
-    - task: download:php:tools
-      vars:
-        TOOLS_DIR: ./../apps
-
   wordpress:bash:
     desc: "Ouvre un shell bash dans le conteneur www"
+    silent: true
     cmds:
     - task: docker:stack:shell
       vars:
