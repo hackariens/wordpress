@@ -3,7 +3,7 @@
 ![Version](https://img.shields.io/badge/version-1.0.0-blue.svg?cacheSeconds=2592000)
 ![Documentation](https://img.shields.io/badge/documentation-yes-brightgreen.svg)
 [![Maintenance](https://img.shields.io/badge/Maintained%3F-yes-green.svg)](https://github.com/hackariens/wordpress/graphs/commit-activity)
-![Continuous Integration](https://github.com/hackariens/wordpress/workflows/ci/badge.svg?branch=develop)
+![Continuous Integration](https://github.com/hackariens/wordpress/actions/workflows/ci.yml/badge.svg?branch=develop)
 
 > Template de site internet sous wordpress
 
@@ -17,9 +17,9 @@
 
 Software:
 
-- npm
-- docker
-- repository koromerzhin/lampy
+- [task](https://taskfile.dev/)
+- [nodejs](https://nodejs.org/)
+- [lampy](https://github.com/koromerzhin/lampy)
 
 Config:
 
@@ -32,7 +32,7 @@ Hosts:
 ## Download
 
 ```sh
-git clone --recurse-submodules git@github.com:hackariens/wordpress.git wordpress
+git clone --recursive git@github.com:hackariens/wordpress.git wordpress
 cd wordpress
 ```
 
@@ -40,22 +40,16 @@ cd wordpress
 
 Edit .env with .env.example
 
-## Install
-
-```sh
-npm install
-```
-
 ## Create apps
 
 ```sh
-npm run create:apps
+task create:apps
 ```
 
 ## Launch
 
 ``` sh
-npm run exec
+task wordpress:exec
 ```
 
 ## Author
