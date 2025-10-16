@@ -21,7 +21,7 @@ vars:
   FILESQL: '{{.FILESQL | default "dump.sql"}}'
   FOLDERLAMPY: '{{.FOLDERLAMPY | default "lampy"}}'
   SERVERNAME: '{{.SERVERNAME | default "wordpress.traefik.me"}}'
-  DOCKERCOMPOSEFILE: '{{.DOCKERCOMPOSEFILE | default "docker-compose.yml"}}'
+  DOCKERCOMPOSEFILE: '{{.DOCKERCOMPOSEFILE | default "docker-compose-lampy.yml"}}'
 
 tasks:
   default:
@@ -59,7 +59,7 @@ tasks:
     desc: "Crée le dossier apps avec une installation WordPress via Bedrock"
     silent: true
     cmds:
-    - docker run --rm -v $(pwd):/var/www -w /var/www $(pwd)/apps:/var/www -w /var/www $(awk '/www:/ {f=1} f && /image:/ {print $2; exit}' {{.DOCKERCOMPOSEFILE}}) composer create-project roots/bedrock apps --no-interaction
+    - docker run --rm -v $(pwd):/var/www -w /var/www $(awk '/www:/ {f=1} f && /image:/ {print $2; exit}' {{.DOCKERCOMPOSEFILE}}) composer create-project roots/bedrock apps --no-interaction
 
   wordpress:getapacheconf:
     desc: "Récupère la configuration Apache depuis l'image Docker"
