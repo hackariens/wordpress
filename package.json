@@ -21,6 +21,6 @@
     "cypress": "15.21.*",
     "dotenv": "17.4.*",
     "jscpd": "5.2.*",
-    "release-it": "19.2.*"
+    "release-it": "21.0.*"
   }
 }
